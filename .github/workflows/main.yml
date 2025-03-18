@@ -24,7 +24,7 @@ jobs:
 
       - name: Build Vite Project
         env:
-          VITE_FIREBASE_API_KEY: "${{ secrets.VITE_FIREBASE_API_KEY }}"
+          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
         run: npm run build
 
       - name: Deploy (Optional Step)
