@@ -1,13 +1,14 @@
 from fastapi import FastAPI, HTTPException, Depends
-from sqlalchemy import create_engine, Column, Integer, String, Boolean
+from sqlalchemy import create_engine, Column, Integer, String, Date
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from fastapi import Query
+import logging
 
+# Database URL (Make sure to replace this with your actual DB URL)
 DATABASE_URL = "postgresql://postgres:Paperpensbooks1%21@my-db-instance.ctigoas4i8rx.us-east-2.rds.amazonaws.com:5432/postgres"
-
 
 # Database setup
 engine = create_engine(DATABASE_URL)
@@ -34,6 +35,7 @@ class Reflection(Base):
     id = Column(Integer, primary_key=True, index=True)
     topic = Column(String, index=True)
     content = Column(String)
+    date = Column(String)
 
 Base.metadata.create_all(bind=engine)
 
@@ -70,54 +72,24 @@ class TaskCreate(BaseModel):
 class ReflectionCreate(BaseModel):
     topic: str
     content: str
+    date: str
 
 # Root endpoint
 @app.get("/")
 def home():
     return {"message": "FastAPI + AWS RDS PostgreSQL is running!"}
 
-# Add User Endpoint
-@app.post("/users/")
-def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    # Check if the user already exists
-    existing_user = db.query(User).filter(User.email == user.email).first()
-    if existing_user:
-        raise HTTPException(status_code=400, detail="Email already registered.")
-    
-    new_user = User(name=user.name, email=user.email)
-    db.add(new_user)
-    db.commit()
-    db.refresh(new_user)
-    return {"message": "User created successfully!", "user": new_user}
-
-# Get Users Endpoint with pagination
-@app.get("/users/")
-def get_users(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    users = db.query(User).offset(skip).limit(limit).all()
-    return users
-
-# Add Task Endpoint
-@app.post("/tasks/")
-def create_task(task: TaskCreate, db: Session = Depends(get_db)):
-    new_task = Task(title=task.title, category=task.category, deadline=task.deadline, progress=0)
-    db.add(new_task)
-    db.commit()
-    db.refresh(new_task)
-    return {"message": "Task created successfully!", "task": new_task}
-
-# Get Tasks Endpoint with pagination
-@app.get("/tasks/")
-def get_tasks(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    tasks = db.query(Task).offset(skip).limit(limit).all()
-    return tasks
-
 # Add Reflection Endpoint
 @app.post("/reflections/")
 def create_reflection(reflection: ReflectionCreate, db: Session = Depends(get_db)):
-    new_reflection = Reflection(topic=reflection.topic, content=reflection.content)
+    new_reflection = Reflection(topic=reflection.topic, content=reflection.content, date=reflection.date)
     db.add(new_reflection)
     db.commit()
     db.refresh(new_reflection)
+    
+    # Log the reflection saved
+    logging.info(f"New reflection saved: {new_reflection.id} - {new_reflection.topic} - {new_reflection.content}")
+    
     return {"message": "Reflection created successfully!", "reflection": new_reflection}
 
 # Get Reflections Endpoint with pagination
