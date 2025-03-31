@@ -6,9 +6,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from fastapi import Query
 import logging
+import os
+from dotenv import load_dotenv
 
 # Database URL (Make sure to replace this with your actual DB URL)
-DATABASE_URL = "postgresql://postgres:Paperpensbooks1%21@my-db-instance.ctigoas4i8rx.us-east-2.rds.amazonaws.com:5432/postgres"
+load_dotenv()
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Database setup
 engine = create_engine(DATABASE_URL)

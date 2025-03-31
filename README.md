@@ -45,9 +45,6 @@ git clone https://github.com/josh-hsiehh/BuddyUp.git
 cd BuddyUp
 
 2. Backend setup
-bash
-Copy
-Edit
 cd backend/fastapi-backend
 python3 -m venv .venv
 source .venv/bin/activate
