@@ -69,5 +69,8 @@ This will start the app on http://localhost:5174.
 This project is a WIP — open to contributions, suggestions, and collabs. DM me or fork the repo if you’re interested!
 
 📬 Contact
-Made by @josh-hsiehh 💙
+Made by @josh-hsiehh on Github, IG, and X 💙
+Linkedin: https://www.linkedin.com/in/joshua--hsieh/
+Discord: joshuaH3838
+
 
