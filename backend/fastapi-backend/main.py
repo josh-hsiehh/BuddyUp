@@ -98,5 +98,6 @@ def create_reflection(reflection: ReflectionCreate, db: Session = Depends(get_db
 # Get Reflections Endpoint with pagination
 @app.get("/reflections/")
 def get_reflections(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    reflections = db.query(Reflection).offset(skip).limit(limit).all()
+    reflections = db.query(Reflection).order_by(Reflection.id.desc()).offset(skip).limit(limit).all()
     return reflections
+
