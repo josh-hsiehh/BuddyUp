@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: 'localhost',  // Ensures local connection
-    port: 5173,         // Default port
+    port: 5174,         // Default port
     strictPort: true,
     watch: {
       usePolling: true, // Fixes some WebSocket issues

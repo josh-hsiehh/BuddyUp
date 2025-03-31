@@ -36,9 +36,11 @@
 
 ## 🧪 Running the App Locally
 
-### 1. Clone the repo
+
 
 ```bash
+1. Clone The Repo
+
 git clone https://github.com/josh-hsiehh/BuddyUp.git
 cd BuddyUp
 
