@@ -36,6 +36,15 @@ const Dashboard = () => {
           <Link to="/buddies" className="link-btn">View Buddies</Link>
         </div>
       </div>
+      <div className="about-buddyup">
+        <h2>What is BuddyUp?</h2>
+          <p>
+            BuddyUp helps students build structure and accountability through daily check-ins, reflections,
+            goal tracking, and buddy support. Whether you're trying to stay focused or find purpose, BuddyUp
+            makes your journey intentional and collaborative.
+          </p>
+      </div>
+
     </div>
   );
 };
