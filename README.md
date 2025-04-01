@@ -54,9 +54,6 @@ uvicorn main:app --reload --host 127.0.0.1 --port 8000
 Make sure your PostgreSQL connection is working — update DATABASE_URL in main.py if needed.
 
 3. Frontend setup
-bash
-Copy
-Edit
 cd frontend/app  # or frontend/my-project if you haven't renamed yet
 npm install
 npm run dev

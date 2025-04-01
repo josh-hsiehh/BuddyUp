@@ -1,28 +1,44 @@
-/* AccountaBuddy App Styling */
+/* BuddyUp App Styling - Light Purple Theme + Dark Mode Support */
 
 :root {
-  --primary-color: #4a6fa5;
-  --secondary-color: #9da9be;
-  --accent-color: #ff7e5f;
-  --light-color: #f8f9fa;
-  --dark-color: #343a40;
-  --success-color: #5cb85c;
-  --warning-color: #f0ad4e;
+  --primary-color: #7e57c2;
+  --secondary-color: #d1c4e9;
+  --accent-color: #9575cd;
+  --light-color: #ffffff;
+  --background-color: #f3f2f7;
+  --text-color: #1a1a1a;
+  --muted-text: #555;
+  --success-color: #81c784;
+  --warning-color: #ffb74d;
   --border-radius: 8px;
-  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode {
+  --primary-color: #b39ddb;
+  --secondary-color: #6a5acd;
+  --accent-color: #9575cd;
+  --light-color: #1e1e1e;
+  --background-color: #121212;
+  --text-color: #eeeeee;
+  --muted-text: #aaa;
+  --box-shadow: 0 2px 12px rgba(255, 255, 255, 0.05);
+  --success-color: #81c784;
+  --warning-color: #ffb74d;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: var(--dark-color);
-  background-color: #f5f7fa;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
 .app-container {
@@ -38,7 +54,7 @@ body {
   align-items: center;
   padding: 15px 0;
   margin-bottom: 30px;
-  border-bottom: 1px solid var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
 }
 
 .logo {
@@ -58,7 +74,7 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: var(--dark-color);
+  color: var(--text-color);
   font-weight: 500;
   transition: color 0.3s;
 }
@@ -67,17 +83,30 @@ body {
   color: var(--primary-color);
 }
 
-/* Common Components */
-h1 {
+/* Toggle Button */
+.theme-toggle {
+  background: none;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+/* Typography */
+h1, h3, h4, h5 {
   color: var(--primary-color);
   margin-bottom: 20px;
 }
 
-h3 {
-  margin-bottom: 15px;
-  color: var(--dark-color);
-}
-
+/* Forms */
 input, select, textarea {
   width: 100%;
   padding: 10px;
@@ -85,12 +114,15 @@ input, select, textarea {
   border: 1px solid var(--secondary-color);
   border-radius: var(--border-radius);
   font-family: inherit;
+  background-color: var(--light-color);
+  color: var(--text-color);
 }
 
 textarea {
   resize: vertical;
 }
 
+/* Buttons */
 .primary-btn {
   background-color: var(--primary-color);
   color: white;
@@ -102,7 +134,7 @@ textarea {
 }
 
 .primary-btn:hover {
-  background-color: #3a5884;
+  background-color: var(--accent-color);
 }
 
 .secondary-btn {
@@ -116,7 +148,7 @@ textarea {
 }
 
 .secondary-btn:hover {
-  background-color: #8791a3;
+  background-color: hsl(261, 46%, 74%);
 }
 
 .action-btn {
@@ -134,51 +166,83 @@ textarea {
   color: white;
 }
 
-.link-btn {
-  display: inline-block;
+.link-btn, a {
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
 }
 
-.link-btn:hover {
-  color: #3a5884;
+.link-btn:hover, a:hover {
+  color: var(--accent-color);
   text-decoration: underline;
 }
 
-.card {
-  background-color: white;
+/* Cards */
+.card,
+.reflection-card,
+.goal-card,
+.buddy-card,
+.profile-card,
+.stats-section,
+.edit-profile,
+.add-goal-form,
+.buddy-requests,
+.buddies-list,
+.find-buddies {
+  background-color: var(--light-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   padding: 20px;
   margin-bottom: 20px;
 }
 
-/* Dashboard */
+/* Dashboard Grid */
+.dashboard-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 .dashboard-summary {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 20px;
 }
 
-/* Goal Tracker */
-.add-goal-form {
-  background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 20px;
-  margin-bottom: 30px;
+@media (max-width: 768px) {
+  .dashboard-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+
+  .nav-links {
+    margin-top: 15px;
+  }
+
+  .nav-links li {
+    margin: 0 10px;
+  }
+
+  .goal-card {
+    flex-direction: column;
+  }
+
+  .goal-actions {
+    margin-top: 15px;
+    align-items: flex-start;
+  }
 }
 
+/* Goal Cards */
 .goal-card {
   display: flex;
   justify-content: space-between;
-  background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 20px;
-  margin-bottom: 15px;
 }
 
 .goal-info {
@@ -193,16 +257,7 @@ textarea {
   justify-content: space-between;
 }
 
-.category-badge {
-  display: inline-block;
-  background-color: var(--primary-color);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  margin-bottom: 8px;
-}
-
+/* Progress Bar */
 .progress-container {
   width: 100%;
   height: 8px;
@@ -218,38 +273,13 @@ textarea {
   transition: width 0.3s ease;
 }
 
-.buddies-section {
-  margin-top: 15px;
-}
-
-.buddies-section ul {
-  list-style: none;
-  margin-top: 5px;
-}
-
 /* Reflections */
-.reflection-form {
-  background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 20px;
-  margin-bottom: 30px;
-}
-
 .prompt-box {
-  background-color: #f0f7ff;
+  background-color: #f5edff;
   border-left: 4px solid var(--primary-color);
   padding: 15px;
   margin-bottom: 15px;
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
-}
-
-.reflection-card {
-  background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 20px;
-  margin-bottom: 15px;
 }
 
 .reflection-header {
@@ -258,17 +288,8 @@ textarea {
   margin-bottom: 10px;
 }
 
-.topic-badge {
-  display: inline-block;
-  background-color: #9da9be;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-}
-
 .reflection-insights {
-  background-color: #fff8e1;
+  background-color: #fff7eb;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   padding: 20px;
@@ -276,51 +297,7 @@ textarea {
   border-left: 4px solid var(--warning-color);
 }
 
-/* Accountability Buddies */
-.buddy-requests, .buddies-list, .find-buddies {
-  background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 20px;
-  margin-bottom: 30px;
-}
-
-.request-card, .buddy-card {
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius);
-  padding: 15px;
-  margin-bottom: 15px;
-}
-
-.request-actions, .buddy-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.search-container, .invite-container {
-  display: flex;
-  gap: 10px;
-  margin: 15px 0;
-}
-
 /* Profile */
-.profile-card {
-  background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 20px;
-  margin-bottom: 30px;
-}
-
-.edit-profile {
-  background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 20px;
-  margin-bottom: 30px;
-}
-
 .form-group {
   margin-bottom: 15px;
 }
@@ -336,28 +313,10 @@ textarea {
   margin-bottom: 20px;
 }
 
-.value-badge {
-  display: inline-block;
-  background-color: #e0f0ff;
-  color: var(--primary-color);
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 0.9rem;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
 .profile-actions {
   display: flex;
   gap: 10px;
   margin-top: 20px;
-}
-
-.stats-section {
-  background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 20px;
 }
 
 .stats-container {
@@ -367,7 +326,7 @@ textarea {
 }
 
 .stat-card {
-  background-color: #f8f9fa;
+  background-color: #f0f0f5;
   border-radius: var(--border-radius);
   padding: 15px;
   text-align: center;
@@ -377,32 +336,4 @@ textarea {
   font-size: 1.8rem;
   color: var(--primary-color);
   margin-bottom: 5px;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .goal-card {
-    flex-direction: column;
-  }
-  
-  .goal-actions {
-    margin-top: 15px;
-    align-items: flex-start;
-  }
-  
-  .dashboard-summary {
-    grid-template-columns: 1fr;
-  }
-  
-  .navbar {
-    flex-direction: column;
-  }
-  
-  .nav-links {
-    margin-top: 15px;
-  }
-  
-  .nav-links li {
-    margin: 0 10px;
-  }
 }
