@@ -1,6 +1,6 @@
 # BuddyUp 🧠🤝
 
-**BuddyUp** is a full-stack accountability app built for college students looking to improve their structure, time management, and overall wellbeing. The app helps users reflect on their purpose, track progress on goals, and stay accountable with the support of friends.
+**BuddyUp** is a full-stack accountability app built for college students looking to improve their structure, time management, and overall wellbeing. The app helps users reflect on their purpose, track progress on goals, and stay accountable with the support of friends. We've got this <33
 
 ---
 
