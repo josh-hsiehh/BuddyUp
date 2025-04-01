@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './AccountabilityBuddies.css';
 
 function AccountabilityBuddies() {
     const [buddies, setBuddies] = useState([

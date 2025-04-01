@@ -1,0 +1,23 @@
+.buddy-card,
+.buddy-requests,
+.buddies-list,
+.find-buddies {
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.buddy-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.search-container,
+.invite-container {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}

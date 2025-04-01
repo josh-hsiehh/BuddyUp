@@ -1,4 +1,4 @@
-/* BuddyUp App Styling - Light Purple Theme + Dark Mode Support */
+/* BuddyUp App Styling - Light & Dark Theme */
 
 :root {
   --primary-color: #7e57c2;
@@ -14,24 +14,23 @@
   --box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
-body.dark-mode {
-  --primary-color: #b39ddb;
-  --secondary-color: #6a5acd;
-  --accent-color: #9575cd;
+body.dark {
+  --primary-color: #b388ff;
+  --secondary-color: #5e548e;
+  --accent-color: #7e57c2;
   --light-color: #1e1e1e;
   --background-color: #121212;
-  --text-color: #eeeeee;
-  --muted-text: #aaa;
+  --text-color: #e0e0e0;
+  --muted-text: #999;
+  --success-color: #66bb6a;
+  --warning-color: #ffa726;
   --box-shadow: 0 2px 12px rgba(255, 255, 255, 0.05);
-  --success-color: #81c784;
-  --warning-color: #ffb74d;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
@@ -83,23 +82,6 @@ body {
   color: var(--primary-color);
 }
 
-/* Toggle Button */
-.theme-toggle {
-  background: none;
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-  padding: 6px 12px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s;
-}
-
-.theme-toggle:hover {
-  background-color: var(--primary-color);
-  color: var(--light-color);
-}
-
 /* Typography */
 h1, h3, h4, h5 {
   color: var(--primary-color);
@@ -130,7 +112,6 @@ textarea {
   padding: 10px 15px;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .primary-btn:hover {
@@ -144,7 +125,6 @@ textarea {
   padding: 10px 15px;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .secondary-btn:hover {
@@ -158,7 +138,6 @@ textarea {
   padding: 8px 12px;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: all 0.3s;
 }
 
 .action-btn:hover {
@@ -275,11 +254,15 @@ textarea {
 
 /* Reflections */
 .prompt-box {
-  background-color: #f5edff;
+  background-color: #ede7f6;
   border-left: 4px solid var(--primary-color);
   padding: 15px;
   margin-bottom: 15px;
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+body.dark .prompt-box {
+  background-color: #292138;
 }
 
 .reflection-header {
@@ -295,6 +278,10 @@ textarea {
   padding: 20px;
   margin-bottom: 30px;
   border-left: 4px solid var(--warning-color);
+}
+
+body.dark .reflection-insights {
+  background-color: #2a2320;
 }
 
 /* Profile */
@@ -336,4 +323,21 @@ textarea {
   font-size: 1.8rem;
   color: var(--primary-color);
   margin-bottom: 5px;
+}
+
+/* Toggle Button */
+.theme-toggle {
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.theme-toggle:hover {
+  background-color: var(--primary-color);
+  color: #fff;
 }

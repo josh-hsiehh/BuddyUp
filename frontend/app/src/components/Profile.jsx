@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { auth, provider } from '../firebase/firebaseConfig';
 import { signInWithPopup, signOut } from 'firebase/auth';
+import './Profile.css';
+
 
 function Profile({ user }) {
     const [profile, setProfile] = useState({

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './GoalTracker.css';
 
 function GoalTracker() {
     const [goals, setGoals] = useState([

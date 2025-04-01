@@ -1,0 +1,31 @@
+.prompt-box {
+    background-color: #ede7f6;
+    border-left: 4px solid var(--primary-color);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
+  
+  body.dark .prompt-box {
+    background-color: #292138;
+  }
+  
+  .reflection-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .reflection-insights {
+    background-color: #fff7eb;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--warning-color);
+  }
+  
+  body.dark .reflection-insights {
+    background-color: #2a2320;
+  }
+  

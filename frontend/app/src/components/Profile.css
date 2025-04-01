@@ -1,0 +1,128 @@
+/* Profile.css - Styles scoped for the Profile component */
+
+.profile {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .profile h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+  }
+  
+  .auth-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--secondary-color);
+    background-color: var(--light-color);
+    color: var(--text-color);
+  }
+  
+  .auth-container button {
+    margin-right: 10px;
+  }
+  
+  .google-btn {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .profile-card {
+    background-color: var(--light-color);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+  }
+  
+  .profile-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+  }
+  
+  .value-badge {
+    display: inline-block;
+    background-color: #e0f0ff;
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .edit-profile {
+    background-color: var(--light-color);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .profile-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .stats-section {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .stat-card {
+    background-color: #f0f0f5;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .stat-card h4 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+  }
+  
+  /* Dark Mode Overrides */
+  body.dark .profile-card,
+  body.dark .edit-profile,
+  body.dark .stats-section {
+    background-color: #1e1e1e;
+  }
+  
+  body.dark .stat-card {
+    background-color: #292929;
+  }
+  

@@ -1,13 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { auth } from '../firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
+import './Navbar.css';
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
 
   useEffect(() => {
-    document.body.classList.toggle('dark-mode', darkMode);
+    if (darkMode) {
+      document.body.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
   }, [darkMode]);
 
   const handleLogout = () => signOut(auth);
@@ -23,7 +32,7 @@ const Navbar = () => {
         <li><Link to="/profile">Profile</Link></li>
       </ul>
       <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
-        {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+        {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
       </button>
     </nav>
   );
