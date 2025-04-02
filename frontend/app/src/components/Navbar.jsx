@@ -23,17 +23,29 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="logo">BuddyUp</div>
+      <div className="navbar-left">
+        <div className="logo">BuddyUp</div>
+      </div>
+
       <ul className="nav-links">
-        <li><Link to="/">Dashboard</Link></li>
-        <li><Link to="/goals">Goals</Link></li>
-        <li><Link to="/reflections">Reflections</Link></li>
-        <li><Link to="/buddies">Buddies</Link></li>
-        <li><Link to="/profile">Profile</Link></li>
+        <li><Link to="/">About</Link></li>
+        <li className="dropdown">
+          <span>Resources</span>
+          <ul className="dropdown-menu">
+            <li><Link to="/goals">Goals</Link></li>
+            <li><Link to="/reflections">Reflections</Link></li>
+            <li><Link to="/buddies">Buddies</Link></li>
+          </ul>
+        </li>
       </ul>
-      <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
-        {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
-      </button>
+
+      <div className="navbar-right">
+        <Link to="/signup" className="auth-btn outline">Sign up</Link>
+        <Link to="/profile" className="auth-btn">Login</Link>
+        <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
+        </button>
+      </div>
     </nav>
   );
 };

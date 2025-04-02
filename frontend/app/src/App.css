@@ -13,14 +13,20 @@
 
 body.dark {
   --primary-color: #b388ff;
-  --secondary-color: #5e548e;
-  --accent-color: #9575cd;
-  --light-color: #222;
-  --background-color: #121212;
-  --text-color: #f1f1f1;
-  --muted-text: #aaa;
-  --box-shadow: 0 4px 12px rgba(255, 255, 255, 0.04);
+  --secondary-color: #7d7dc1;  /* soft slate */
+  --accent-color: #a992e7;
+
+  --light-color: #2f2f40;        /* lighter card */
+  --background-color: #262730;   /* slightly brighter than before */
+  --text-color: #f0f0f5;
+  --muted-text: #b0b0c0;
+
+  --success-color: #66bb6a;
+  --warning-color: #ffa726;
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
+
+
 
 /* Reset */
 * {
@@ -34,6 +40,9 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
+  
+  transition: background-color 0.6s ease, color 0.6s ease;
+  
 }
 
 .app-container {
@@ -83,11 +92,15 @@ body {
   border-radius: var(--border-radius);
   cursor: pointer;
   font-size: 0.875rem;
+  transition: background-color 0.6s ease, color 0.6s ease, border 0.6s ease;
+  transform: scale(1);
+  transition: all 0.4s ease;
 }
 
 .theme-toggle:hover {
   background-color: var(--primary-color);
   color: white;
+  transform: scale(1.04);
 }
 
 /* Typography */
