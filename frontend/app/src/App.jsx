@@ -24,8 +24,10 @@ function App() {
 
   return (
     <Router>
+      <Navbar />  {/* Render the Navbar */}
+
       <div className="app-container">
-        <Navbar />  {/* Render the Navbar */}
+        
         
         {/* Setting up routes for different pages */}
         <Routes>

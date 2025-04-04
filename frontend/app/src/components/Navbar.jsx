@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebaseConfig';
 import './Navbar.css';
+// Optional: Use your own icon file or react-icons
+
 
 const Navbar = () => {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
@@ -21,34 +23,36 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      {/* Logo */}
-      <div className="logo">
-        <Link to="/">BuddyUp</Link>
-      </div>
+      <div className="nav-wrapper">
+        {/* Left: Logo */}
+        <div className="nav-left">
+          <img src="/friends.png" alt="BuddyUp Logo" className="logo-icon" />
 
-      {/* Center Navigation */}
-      <div className="nav-center">
-        <ul className="nav-links">
-          <li><Link to="/about">About</Link></li>
-          <li className="dropdown">
-            <span className="dropdown-toggle">Resources</span>
-            <div className="dropdown-menu">
-              <Link to="/goals">Goals</Link>
-              <Link to="/reflections">Reflections</Link>
-              <Link to="/buddies">Buddies</Link>
-            </div>
-          </li>
-        </ul>
+          <Link to="/" className="brand">BuddyUp</Link>
+        </div>
 
-        {/* Right Action Buttons */}
-        <div className="nav-actions">
-          <Link to="/signup" className="auth-btn">Sign Up</Link>
-          <Link to="/login" className="auth-btn">Login</Link>
-          <button 
-            onClick={() => setDarkMode(!darkMode)} 
-            className="theme-toggle"
-          >
-            {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
+        {/* Center: Nav links */}
+        <div className="nav-center">
+          <ul className="nav-links">
+            <li><Link to="/about">About</Link></li>
+            <li className="dropdown">
+              <span className="dropdown-toggle">Resources</span>
+              <div className="dropdown-menu">
+                <Link to="/goals">Goals</Link>
+                <Link to="/reflections">Reflections</Link>
+                <Link to="/buddies">Buddies</Link>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        {/* Right: Auth actions */}
+        <div className="nav-right">
+          <Link to="/signup" className="nav-link">Sign Up</Link>
+          <Link to="/login" className="nav-link">Login</Link>
+          <span className="divider">|</span>
+          <button onClick={() => setDarkMode(!darkMode)} className="nav-link toggle-btn">
+            {darkMode ? "🌞" : "🌙"}
           </button>
         </div>
       </div>
