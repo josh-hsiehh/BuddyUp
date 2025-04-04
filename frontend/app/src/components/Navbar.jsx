@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { auth } from '../firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
+import { auth } from '../firebase/firebaseConfig';
 import './Navbar.css';
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
 
   useEffect(() => {
     if (darkMode) {
@@ -23,28 +21,36 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-left">
-        <div className="logo">BuddyUp</div>
+      {/* Logo */}
+      <div className="logo">
+        <Link to="/">BuddyUp</Link>
       </div>
 
-      <ul className="nav-links">
-        <li><Link to="/">About</Link></li>
-        <li className="dropdown">
-          <span>Resources</span>
-          <ul className="dropdown-menu">
-            <li><Link to="/goals">Goals</Link></li>
-            <li><Link to="/reflections">Reflections</Link></li>
-            <li><Link to="/buddies">Buddies</Link></li>
-          </ul>
-        </li>
-      </ul>
+      {/* Center Navigation */}
+      <div className="nav-center">
+        <ul className="nav-links">
+          <li><Link to="/about">About</Link></li>
+          <li className="dropdown">
+            <span className="dropdown-toggle">Resources</span>
+            <div className="dropdown-menu">
+              <Link to="/goals">Goals</Link>
+              <Link to="/reflections">Reflections</Link>
+              <Link to="/buddies">Buddies</Link>
+            </div>
+          </li>
+        </ul>
 
-      <div className="navbar-right">
-        <Link to="/signup" className="auth-btn outline">Sign up</Link>
-        <Link to="/profile" className="auth-btn">Login</Link>
-        <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
-        </button>
+        {/* Right Action Buttons */}
+        <div className="nav-actions">
+          <Link to="/signup" className="auth-btn">Sign Up</Link>
+          <Link to="/login" className="auth-btn">Login</Link>
+          <button 
+            onClick={() => setDarkMode(!darkMode)} 
+            className="theme-toggle"
+          >
+            {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
+          </button>
+        </div>
       </div>
     </nav>
   );

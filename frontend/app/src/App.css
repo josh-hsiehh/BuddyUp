@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* Root Variables (Light and Dark Mode) */
 :root {
   --primary-color: #7e57c2;
@@ -13,11 +15,11 @@
 
 body.dark {
   --primary-color: #b388ff;
-  --secondary-color: #7d7dc1;  /* soft slate */
+  --secondary-color: #7d7dc1;
   --accent-color: #a992e7;
 
-  --light-color: #2f2f40;        /* lighter card */
-  --background-color: #262730;   /* slightly brighter than before */
+  --light-color: #2f2f40;
+  --background-color: #262730;
   --text-color: #f0f0f5;
   --muted-text: #b0b0c0;
 
@@ -25,8 +27,6 @@ body.dark {
   --warning-color: #ffa726;
   --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
-
-
 
 /* Reset */
 * {
@@ -40,67 +40,13 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
-  
   transition: background-color 0.6s ease, color 0.6s ease;
-  
 }
 
 .app-container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 24px;
-}
-
-/* Clean Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--secondary-color);
-}
-
-.logo {
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--primary-color);
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 28px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  font-weight: 500;
-  color: var(--text-color);
-  font-size: 1rem;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover {
-  color: var(--primary-color);
-}
-
-.theme-toggle {
-  background: none;
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
-  padding: 6px 14px;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-size: 0.875rem;
-  transition: background-color 0.6s ease, color 0.6s ease, border 0.6s ease;
-  transform: scale(1);
-  transition: all 0.4s ease;
-}
-
-.theme-toggle:hover {
-  background-color: var(--primary-color);
-  color: white;
-  transform: scale(1.04);
 }
 
 /* Typography */
@@ -203,17 +149,6 @@ h3 {
 }
 
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 12px;
-  }
-
   .dashboard-summary {
     grid-template-columns: 1fr;
   }
